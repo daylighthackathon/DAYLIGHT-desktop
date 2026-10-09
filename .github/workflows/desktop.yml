@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        working-directory: desktop
+        working-directory: daylight-repo/desktop
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,8 +29,8 @@ jobs:
         with:
           name: daylight-${{ matrix.os }}
           path: |
-            desktop/dist/*.AppImage
-            desktop/dist/*.deb
-            desktop/dist/*.exe
-            desktop/dist/*.zip
+            daylight-repo/desktop/dist/*.AppImage
+            daylight-repo/desktop/dist/*.deb
+            daylight-repo/desktop/dist/*.exe
+            daylight-repo/desktop/dist/*.zip
           if-no-files-found: error
