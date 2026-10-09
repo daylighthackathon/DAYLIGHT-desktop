@@ -1,0 +1,69 @@
+{
+  "name": "daylight-desktop",
+  "productName": "Daylight",
+  "version": "0.1.0",
+  "description": "Daylight: every CV claim, in the light. Desktop app.",
+  "author": {
+    "name": "Daylight team",
+    "email": "daylight-team@users.noreply.github.com"
+  },
+  "license": "MIT",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win",
+    "dist": "electron-builder --linux --win"
+  },
+  "dependencies": {
+    "pdfjs-dist": "4.10.38"
+  },
+  "devDependencies": {
+    "electron": "38.8.6",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "ai.daylight.desktop",
+    "productName": "Daylight",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**",
+      "renderer/**",
+      "node_modules/pdfjs-dist/legacy/build/pdf.min.mjs",
+      "node_modules/pdfjs-dist/legacy/build/pdf.worker.min.mjs",
+      "node_modules/pdfjs-dist/package.json",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Office",
+      "icon": "build/icon.png",
+      "maintainer": "Daylight team <daylight-team@users.noreply.github.com>"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable",
+        "zip"
+      ],
+      "icon": "build/icon.png",
+      "signAndEditExecutable": false,
+      "artifactName": "Daylight-Windows-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Daylight-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Daylight-Portable-${version}.${ext}"
+    }
+  },
+  "homepage": "https://github.com/your-team/daylight"
+}
